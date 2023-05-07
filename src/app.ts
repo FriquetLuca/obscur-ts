@@ -11,7 +11,7 @@ const startApp = async (host: string, port: number) => {
       console.error(err);
       process.exit(1);
     }
-    console.log(`Server is running at http://${env.HOST}:${env.PORT}`);
+    console.log(`Server listening at http://${env.HOST}:${env.PORT}`);
   });
 };
 void startApp(env.HOST, env.PORT ?? 80);
