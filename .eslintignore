@@ -1,0 +1,4 @@
+webpack.config.js
+bin/*
+prisma/data.js
+prisma/seed.js

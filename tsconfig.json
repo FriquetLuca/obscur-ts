@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "skipLibCheck": false,
+    "esModuleInterop": true,
+    "declaration": false,
+    "target": "es2017",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "outDir": "bin",
+    "lib": ["es6", "dom", "dom.iterable", "es2017"],
+    "baseUrl": ".",
+    "noUncheckedIndexedAccess": true,
+    "strict": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [ "src/**/*", "**/*.ts" ],
+  "exclude": [
+    "node_modules/**/*",
+    "bower_components/**/*",
+    "jspm_packages/**/*"
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "target": "es2017",
+      "moduleResolution": "node",
+      "lib": [ "es6", "dom", "dom.iterable", "es2017" ],
+      "baseUrl": "."
+    }
+  }
+}
