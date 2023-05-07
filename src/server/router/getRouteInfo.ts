@@ -46,6 +46,12 @@ export function getRouteInfo() {
       path: filePath,
       importPath: removeExtension(filePath)
     });
+    const fastifyLanguageRoutes = `/:langCode${fastifyRoutes}`;
+    mapFiles.set(fastifyLanguageRoutes, {
+      type: findRouteType(currentPath) ?? "PAGES",
+      path: filePath,
+      importPath: removeExtension(filePath)
+    });
   }
   return mapFiles;
 }

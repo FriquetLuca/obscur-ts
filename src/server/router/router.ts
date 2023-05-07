@@ -21,13 +21,13 @@ export function registerRoutes(app: Fastify) {
         case "AUTH":
           app.post(routePath, async (request, reply) => {
             const defaultRoute = currentRoute.default as AuthRoute;
-            await defaultRoute(request as FastifyRequest, reply, JSONPost(request));
+            await defaultRoute(request as unknown as FastifyRequest, reply, JSONPost(request));
           });
           break;
         case "PAGES":
           app.get(routePath, async (request, reply) => {
             const defaultRoute = currentRoute.default as PagesRoute;
-            const response = await defaultRoute(request as FastifyRequest, reply);
+            const response = await defaultRoute(request as unknown as FastifyRequest, reply);
             reply.type("text/html").send(response);
           });
           break;

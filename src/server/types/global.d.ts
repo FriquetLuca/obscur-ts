@@ -99,6 +99,7 @@ type Request = unknown & { body: unknown };
 type ObscurifyRequest<T, U extends FastifySession | FSession> = {
   body: T;
   session: U;
+  locale?: string;
   readonly socket: Socket;
   readonly connection: Socket;
   readonly ip: string;

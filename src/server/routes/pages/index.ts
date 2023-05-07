@@ -3,7 +3,7 @@ import type { FastifyRequest } from "../../types/global";
 export default function Home(request: FastifyRequest) {
   const isLoggedIn = request.session.get("isLoggedIn");
   const buttonText = isLoggedIn ? "Logout" : "";
-  return `<h1>Welcome!</h1><button id="logout">${buttonText}</button>
+  return `<h1>Welcome!</h1><h2>Language selected: ${request.locale}</h2><button id="logout">${buttonText}</button>
 
   <script>
   const logoutBtn = document.getElementById("logout");
