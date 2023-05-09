@@ -1,12 +1,15 @@
 /**
- * For given function type Fn, and any type A, AppendArg will produce a function of type G which will be the same as Fn but with appended argument A as a last one.
+ * AppendArg<(args_0: number) => void, string> // (args_0: number, args_1: string) => void
  */
 export type AppendArg<Fn, A> = Fn extends (...args: infer R) => infer T ? (...args: [...R, A]) => T : never;
 /**
- * Get the return type of a function or a promise (if it's a promise, it omit the promise unlike ReturnType).
+ * ReturnTypeValue<() => number> // number
+ * ReturnTypeValue<() => Promise<number>> // number
  */
 export type ReturnTypeValue<Fn> = Fn extends (...args: unknown[]) => Promise<infer T> ? T : Fn extends (...args: unknown[]) => infer T ? T : never;
 /**
- * Return true if the function return a promise, otherwise false. If the type is not a function, it returns never.
+ * ReturnTypeValue<number> // false
+ * ReturnTypeValue<() => number> // false
+ * ReturnTypeValue<() => Promise<number>> // true
  */
-export type IsPromise<Fn> = Fn extends (...args: unknown[]) => infer T ? T extends Promise<unknown> ? true : false : never;
+export type IsPromise<Fn> = Fn extends (...args: unknown[]) => infer T ? T extends Promise<unknown> ? true : false : false;

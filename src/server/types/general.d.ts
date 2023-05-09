@@ -166,7 +166,6 @@ export type DeepMutable<T extends object> = T extends (...args: unknown[]) => un
  */
 export type PickMutableKeys<T> = keyof { [Key in keyof T as Equal<Pick<T, Key>, Readonly<Pick<T, Key>>> extends true ? never : Key ]: unknown };
 /**
- * Get all possible paths that could be called by _.get (a lodash function) to get the value of an object.
  * GetPaths<{ name: string; age: number }> // "name" | "age"
  * GetPaths<{ refCount: number; person: { name: string; age: number }; }> // "refCount" | "person" | "person.name" | "person.age"
  * GetPaths<{ books: [{ name: string; price: number }] }> // expected to be the superset of "books" | "books.0" | "books[0]" | "books.[0]" | "books.0.name" | "books.0.price" | "books.length" | "books.find"
@@ -210,11 +209,10 @@ export type Camelize<T> = {
   terminal: T,
 }[ T extends any[] ? 'array' : T extends DefinedDataType ? 'terminal' : T extends string ? 'string' : 'default' ];
 /**
- * A type that is defined.
+ * A type that is a defined value.
  */
 export type DefinedDataType = number | boolean | symbol | bigint | Function;
 /**
- * A generic type that return whether K are required keys of T.
  * IsKeyRequired<{ a: number, b?: string }, "a"> // true
  * IsKeyRequired<{ a: number, b?: string }, "b"> // false
  * IsKeyRequired<{ a: number, b?: string }, "a" | "b"> // false
