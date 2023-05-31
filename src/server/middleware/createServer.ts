@@ -8,8 +8,8 @@ import fastifyCookie from "@fastify/cookie";
 import fastifySession from "@fastify/session";
 import fastifyStatic from "@fastify/static";
 import qs from "qs";
-import path from "path";
-import rootPath from "../../appPath";
+import cors from "../config/cors";
+import staticAssets from "../config/staticAssets";
 
 /**
  * The fastify application.
@@ -19,20 +19,13 @@ export type FastifyServer = Awaited<ReturnType<typeof createServer>>;
 export default async function createServer(isHTTPS?: boolean) {
   const app = fastify({ logger: env.NODE_ENV === "development" });
   await app.register(fastifyAuth);
-  await app.register(fastifyCors, {
-    origin: '*',
-  });
-  await app.register(fastifyStatic, {
-    root: path.join(rootPath, "../", env.ASSETS_PATH ?? "assets/"),
-    prefix: `/${env.ASSETS_PATH ?? ""}`,
-    index: false,
-    list: true
-  });
+  await app.register(fastifyCors, cors);
+  await app.register(fastifyStatic, staticAssets);
   await app.register(fastifyFormbody, { parser: str => qs.parse(str) });
   await app.register(fastifyMultipart);
   await app.register(fastifyCookie);
   await app.register(fastifySession, {
-    secret: env.SESSION_SECRET, // Change this to your desired secret
+    secret: env.SESSION_SECRET,
     cookie: {
       sameSite: true,
       secure: isHTTPS

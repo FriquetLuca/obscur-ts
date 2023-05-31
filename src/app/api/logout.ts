@@ -1,5 +1,4 @@
-import type { GetHandlerReply, GetHandlerRequest } from "../middleware/middleware";
-
+import type { GetHandlerReply, GetHandlerRequest } from "../../server/middleware/middleware";
 
 export default async function Logout(request: GetHandlerRequest, reply: GetHandlerReply) {
   request.session.set("isLoggedIn", false);

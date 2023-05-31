@@ -1,4 +1,8 @@
-import { GetHandler, PostHandler } from "../middleware/middleware";
+import type { GetHandler, PostHandler } from "../middleware/middleware";
+
+export type APIConfig = {
+  handlerType: "GET" | "POST";
+};
 
 type RouteInfo = {
   filePath: string;
@@ -7,6 +11,7 @@ type RouteInfo = {
 };
 
 type APIModel = {
+  config?: APIConfig;
   default: PostHandler;
 };
 

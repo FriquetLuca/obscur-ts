@@ -1,4 +1,4 @@
-import { defaultLanguage, isLocales, LocalesLanguagesKey } from "./locales";
+import { defaultLanguage, isLocales, type LocalesLanguagesKey } from "../config/locales";
 import type { FastifyServer } from "./createServer";
 
 type PageRouterParams = Parameters<FastifyServer["get"]>;
@@ -41,9 +41,7 @@ export type GetHandler = (request: GetHandlerRequest, reply: GetHandlerReply) =>
  */
 export type PostHandler = (request: PostHandlerRequest, reply: PostHandlerReply) => unknown;
 
-
-
-export default async function middleware(app: FastifyServer) {
+export default function middleware(app: FastifyServer) {
   app.addHook("preHandler", (req, _, done) => {
     const reqURL = req.raw.url;
     if(reqURL !== undefined) {
@@ -53,12 +51,14 @@ export default async function middleware(app: FastifyServer) {
         const newPath = `/${path.split('/').slice(2).join('/')}`;
         const newUrl = `${(reqURL.split('?')[0] as string).replace(path, newPath)}${reqURL.split('?')[1] ? '?' + reqURL.split('?')[1] : ''}`;
         Object.assign(req, { locale: langCode }); // Set language code as a request property
-        Object.assign(req, { route: newUrl }); // Set language code as a request property
+        Object.assign(req, { route: newUrl }); // Set actual route as newUrl
       } else {
         Object.assign(req, { locale: defaultLanguage }); // Set language code as a request property
+        Object.assign(req, { route: req.raw.url }); // Set current route as newUrl
       }
     } else {
       Object.assign(req, { locale: defaultLanguage }); // Set language code as a request property
+      Object.assign(req, { route: req.raw.url }); // Set current route as newUrl
     }
     done();
   });

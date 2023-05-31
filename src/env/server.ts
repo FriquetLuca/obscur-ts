@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import { z } from "zod";
 import FormatErrors from "./FormatErrors";
-import { type LocalesLanguagesKey, isLocales } from "../server/router/locales";
+import { type LocalesLanguagesKey, isLocales } from "../server/config/locales";
 
 type DotEnv = {
   NODE_ENV: "development" | "production";

@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
-import type { LoginUser } from "../models/user";
-import prisma from "src/database/prisma";
-import type { GetHandlerReply, GetHandlerRequest } from "../middleware/middleware";
+import prisma from "../../database/prisma";
+import type { LoginUser } from "../../server/models/user";
+import type { GetHandlerRequest, GetHandlerReply } from "../../server/middleware/middleware";
 
 export default async function Login(request: GetHandlerRequest, reply: GetHandlerReply) {
   const { username, password } = JSON.parse(request.body as string) as LoginUser;
