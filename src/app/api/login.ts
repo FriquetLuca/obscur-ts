@@ -1,10 +1,10 @@
-import prisma from "../../utils/prisma";
-import type { FastifyReply, FastifyRequest } from "../../types/global";
 import bcrypt from "bcrypt";
-import type { LoginUser } from "../../models/user";
+import type { LoginUser } from "../models/user";
+import prisma from "src/database/prisma";
+import type { GetHandlerReply, GetHandlerRequest } from "../middleware/middleware";
 
-export default async function Login(request: FastifyRequest, reply: FastifyReply, post: Record<string, unknown>) {
-  const { username, password } = post as LoginUser;
+export default async function Login(request: GetHandlerRequest, reply: GetHandlerReply) {
+  const { username, password } = JSON.parse(request.body as string) as LoginUser;
   const user = await prisma.user.findUnique({ where: { username } });
   if(user) {
     const isPasswordValid = await bcrypt.compare(password, user.password);

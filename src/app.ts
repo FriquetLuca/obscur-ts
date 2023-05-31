@@ -1,11 +1,8 @@
 import { env } from "./env/server";
-import createServer from "./server/utils/createServer";
-import { registerRoutes } from "./server/router/router";
-import type { Fastify } from "./server/types/global";
+import middleware from "./server/middleware/middleware";
 
 const startApp = async (host: string, port: number) => {
-  const app = await createServer();
-  registerRoutes(app as Fastify);
+  const app = await middleware();
   app.listen({ host, port }, (err: unknown) => {
     if (err) {
       console.error(err);
