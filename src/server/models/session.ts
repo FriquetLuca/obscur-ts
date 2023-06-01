@@ -1,4 +1,4 @@
 export type Session = {
-  isLoggedIn: boolean;
-  userId: number;
+  logged: boolean;
+  id: number;
 };

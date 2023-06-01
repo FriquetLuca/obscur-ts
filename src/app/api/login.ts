@@ -3,6 +3,7 @@ import prisma from "../../database/prisma";
 import type { LoginUser } from "../../server/models/user";
 import type { GetHandlerRequest, GetHandlerReply } from "../../server/middleware/middleware";
 import { APIConfig } from "../../server/router/loadRoute";
+import type { Session } from "../../server/models/session";
 
 export const config: APIConfig = {
   handlerType: "GET"
@@ -17,7 +18,7 @@ export default async function Login(request: GetHandlerRequest, reply: GetHandle
       request.session.set("cookie", {
         id: user.id,
         logged: true
-      });
+      } as Session);
       reply.send({ message: "Logged in successfully." });
     }
   }
