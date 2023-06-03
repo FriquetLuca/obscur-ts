@@ -4,7 +4,8 @@
   "types": "src/index.ts",
   "main": "src/index.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "postinstall": "tsc"
   },
   "dependencies": {
     "@fastify/auth": "^4.2.0",

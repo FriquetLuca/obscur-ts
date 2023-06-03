@@ -4,12 +4,14 @@
   "description": "An obscure website implementation.",
   "main": "./bin/app.js",
   "scripts": {
-    "dev": "ts-node -r tsconfig-paths/register src/app.ts",
+    "dev": "obskr dev",
+    "debug:dev": "ts-node -r tsconfig-paths/register src/app.ts",
     "build": "npx eslint . && tsc",
     "postinstall": "prisma generate",
     "start": "node bin/app.js",
     "lint": "npx eslint .",
-    "preinstall": "cd packages/server && npm run build"
+    "server:build": "cd packages/server && npm run build",
+    "tools:build": "cd packages/tools && npm run build"
   },
   "keywords": [],
   "author": "Friquet Luca",
@@ -23,7 +25,7 @@
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "@prisma/client": "^4.15.0",
-    "obscur-server": "file:packages/server",
+    "obskr": "file:packages/server",
     "zod": "^3.21.4"
   },
   "devDependencies": {
@@ -35,6 +37,7 @@
     "prisma": "^4.15.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
+    "obscur-server": "file:packages/tools",
     "typescript": "^5.0.4"
   }
 }

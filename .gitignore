@@ -1,5 +1,7 @@
 # Build
 bin
+# Meta datas
+.obskr
 
 # Logs
 logs

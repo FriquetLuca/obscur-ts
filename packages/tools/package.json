@@ -1,0 +1,23 @@
+{
+  "name": "obskr",
+  "description": "CLI for obscur-ts",
+  "version": "0.0.0",
+  "main": "bin/index.js",
+  "bin": {
+    "obskr": "./bin/index.js"
+  },
+  "scripts": {
+    "start": "node bin/index.js",
+    "build": "tsc",
+    "postinstall": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.5",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "clear": "^0.1.0",
+    "commander": "^10.0.1"
+  }
+}

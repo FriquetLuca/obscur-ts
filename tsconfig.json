@@ -19,6 +19,7 @@
   },
   "include": [ "src/**/*", "**/*.ts" ],
   "exclude": [
+    "packages/tools/**/*",
     "bin/**/*",
     "assets/**/*",
     "node_modules/**/*",
