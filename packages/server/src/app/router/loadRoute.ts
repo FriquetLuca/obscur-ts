@@ -1,4 +1,4 @@
-import type { GetHandler, PostHandler } from "../middleware/middleware";
+import type { GetHandler, PostHandler } from "../fastify/hooks";
 
 export type APIConfig = {
   handlerType: "GET" | "POST";

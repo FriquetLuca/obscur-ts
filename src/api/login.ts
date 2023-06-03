@@ -1,9 +1,8 @@
 import bcrypt from "bcrypt";
-import prisma from "../../database/prisma";
-import type { LoginUser } from "../../server/models/user";
-import type { GetHandlerRequest, GetHandlerReply } from "../../server/middleware/middleware";
-import { APIConfig } from "../../server/router/loadRoute";
-import type { Session } from "../../server/models/session";
+import type { APIConfig, GetHandlerReply, GetHandlerRequest } from "obscur-server";
+import type { Session } from "../app/models/session";
+import type { LoginUser } from "../app/models/user";
+import prisma from "../app/database/prisma";
 
 export const config: APIConfig = {
   handlerType: "GET"

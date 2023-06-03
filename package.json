@@ -8,39 +8,33 @@
     "build": "npx eslint . && tsc",
     "postinstall": "prisma generate",
     "start": "node bin/app.js",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "preinstall": "cd packages/server && npm run build"
   },
   "keywords": [],
   "author": "Friquet Luca",
   "license": "MIT",
   "browserslist": "last 100 versions",
   "homepage": "https://friquetluca.github.io/obscur-ts/",
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
-    "@fastify/auth": "^4.2.0",
-    "@fastify/cookie": "^8.3.0",
-    "@fastify/cors": "^8.2.1",
-    "@fastify/formbody": "^7.4.0",
-    "@fastify/multipart": "^7.6.0",
-    "@fastify/session": "^10.2.1",
-    "@fastify/static": "^6.10.1",
-    "@prisma/client": "^4.15.0",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
-    "fastify": "^4.15.0",
-    "fastify-plugin": "^4.5.0",
-    "qs": "^6.11.1",
+    "@prisma/client": "^4.15.0",
+    "obscur-server": "file:packages/server",
     "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/node": "^18.15.11",
-    "@types/qs": "^6.9.7",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "@typescript-eslint/parser": "^5.59.2",
     "eslint": "^8.40.0",
-    "fastify-cli": "^5.7.1",
     "prisma": "^4.15.0",
     "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.2.0"
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.0.4"
   }
 }

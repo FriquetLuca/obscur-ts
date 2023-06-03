@@ -1,4 +1,5 @@
-import type { GetHandlerReply, GetHandlerRequest } from "../../server/middleware/middleware";
+import type { GetHandlerReply, GetHandlerRequest } from "obscur-server";
+
 
 export default async function Logout(request: GetHandlerRequest, reply: GetHandlerReply) {
   request.session.set("cookie", null);

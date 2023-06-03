@@ -3,7 +3,7 @@
     "module": "commonjs",
     "skipLibCheck": false,
     "esModuleInterop": true,
-    "declaration": false,
+    "declaration": true,
     "target": "es2017",
     "moduleResolution": "node",
     "allowJs": true,
@@ -14,10 +14,13 @@
     "strict": true,
     "removeComments": true,
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true
   },
   "include": [ "src/**/*", "**/*.ts" ],
   "exclude": [
+    "bin/**/*",
+    "assets/**/*",
     "node_modules/**/*",
     "bower_components/**/*",
     "jspm_packages/**/*"

@@ -1,0 +1,29 @@
+{
+  "name": "obscur-server",
+  "version": "0.0.0",
+  "types": "src/index.ts",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@fastify/auth": "^4.2.0",
+    "@fastify/cookie": "^8.3.0",
+    "@fastify/cors": "^8.2.1",
+    "@fastify/formbody": "^7.4.0",
+    "@fastify/multipart": "^7.6.0",
+    "@fastify/session": "^10.2.1",
+    "@fastify/static": "^6.10.1",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.15.0",
+    "fastify-plugin": "^4.5.0",
+    "qs": "^6.11.1",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/qs": "^6.9.7",
+    "fastify-cli": "^5.7.1",
+    "typescript": "^5.0.4"
+  }  
+}

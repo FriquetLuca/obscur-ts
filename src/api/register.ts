@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
-import prisma from "../../database/prisma";
-import type { GetHandlerReply, GetHandlerRequest } from "../../server/middleware/middleware";
-import type { RegisterUser } from "../../server/models/user";
+import type { GetHandlerReply, GetHandlerRequest } from "obscur-server";
+import type { RegisterUser } from "../app/models/user";
+import prisma from "../app/database/prisma";
 
 export default async function Register(request: GetHandlerRequest, reply: GetHandlerReply) {
   const { username, password } = JSON.parse(request.body as string) as RegisterUser;

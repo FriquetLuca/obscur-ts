@@ -1,7 +1,8 @@
 import dotenv from "dotenv";
-import { isLocales, type LocalesLanguagesKey } from "obscur-server";
-import FormatErrors from "packages/server/src/env/FormatErrors";
 import { z } from "zod";
+import FormatErrors from "./FormatErrors";
+import { type LocalesLanguagesKey, isLocales } from "../app/config/locales";
+import path from "path";
 
 type DotEnv = {
   NODE_ENV: "development" | "production";
@@ -29,7 +30,7 @@ const serverSchema = z.object({
   ASSETS_PATH: z.string().optional()
 });
 
-dotenv.config();
+dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 const serverEnv = serverSchema.safeParse(process.env);
 
 if(!serverEnv.success) {

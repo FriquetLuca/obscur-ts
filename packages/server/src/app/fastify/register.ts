@@ -1,5 +1,4 @@
-import { env } from "../../env/server";
-import fastify from "fastify";
+import type { FastifyInstance } from "fastify";
 import fastifyAuth from "@fastify/auth";
 import fastifyCors from "@fastify/cors";
 import fastifyFormbody from "@fastify/formbody";
@@ -10,14 +9,14 @@ import fastifyStatic from "@fastify/static";
 import qs from "qs";
 import cors from "../config/cors";
 import staticAssets from "../config/staticAssets";
+import { env } from "../../env/server";
 
 /**
  * The fastify application.
  */
-export type FastifyServer = Awaited<ReturnType<typeof createServer>>;
+export type FastifyRegister = Awaited<ReturnType<typeof register>>;
 
-export default async function createServer(isHTTPS?: boolean) {
-  const app = fastify({ logger: env.NODE_ENV === "development" });
+export default async function register(app: FastifyInstance, isHTTPS?: boolean) {
   await app.register(fastifyAuth);
   await app.register(fastifyCors, cors);
   await app.register(fastifyStatic, staticAssets);

@@ -1,8 +1,8 @@
 import { defaultLanguage, isLocales, type LocalesLanguagesKey } from "../config/locales";
-import type { FastifyServer } from "./createServer";
+import type { FastifyRegister } from "./register";
 
-type PageRouterParams = Parameters<FastifyServer["get"]>;
-type APIRouterParams = Parameters<FastifyServer["post"]>;
+type PageRouterParams = Parameters<FastifyRegister["get"]>;
+type APIRouterParams = Parameters<FastifyRegister["post"]>;
 
 type PageRouterFastifyHandler = Pick<PageRouterParams[1], "handler">["handler"];
 type APIRouterFastifyHandler = Pick<APIRouterParams[1], "handler">["handler"];
@@ -41,7 +41,7 @@ export type GetHandler = (request: GetHandlerRequest, reply: GetHandlerReply) =>
  */
 export type PostHandler = (request: PostHandlerRequest, reply: PostHandlerReply) => unknown;
 
-export default function middleware(app: FastifyServer) {
+export default function hooks(app: FastifyRegister) {
   app.addHook("preHandler", (req, _, done) => {
     const reqURL = req.raw.url;
     if(reqURL !== undefined) {
